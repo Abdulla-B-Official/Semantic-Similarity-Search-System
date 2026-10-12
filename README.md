@@ -80,3 +80,80 @@ Project-5 Semantic Similarity Search System/
 ├── app.py                           # Flask web server entry point
 ├── README.md                        # Project documentation
 └── requirements.txt                 # Python dependencies
+
+```
+
+---
+
+## System Architecture
+
+$$\text{User Query} \longrightarrow \text{Preprocessing \& Tokenization} \longrightarrow \text{Embedding Vectorization} \longrightarrow \text{Similarity Search Engine} \longrightarrow \text{Ranked UI Results}$$
+
+1. **Query Input:** User submits a search query through the web dashboard.
+2. **Text Normalization:** Lowercasing, noise removal, and tokenization via `text_preprocessor.py` and `tokenizer.py`.
+3. **Dense Vectorization:** Query text is mapped into vector space using the trained `Word2Vec`/`FastText` models.
+4. **Vector Retrieval:** `search_engine.py` compares the query vector against pre-computed document embeddings.
+5. **Dashboard Rendering:** Top-$N$ matching documents with similarity scores are delivered back to `script.js` and rendered on `index.html`.
+
+---
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone [https://github.com/Abdulla-B-Official/Semantic-Similarity-Search-System.git](https://github.com/Abdulla-B-Official/Semantic-Similarity-Search-System.git)
+cd "Project-5 Semantic Similarity Search System"
+
+```
+
+### 2. Set Up Virtual Environment
+
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate environment (Windows PowerShell)
+.venv\Scripts\Activate.ps1
+
+# Activate environment (Linux / macOS)
+source .venv/bin/activate
+
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+
+```
+
+---
+
+## Usage Guide
+
+### 1. Model Training & Embedding Generation
+
+To preprocess the document dataset and train the vector models (Word2Vec / FastText), run the training pipeline:
+
+```bash
+python backend/training/train.py
+
+```
+
+This will save model binaries in `backend/models/` and generate vector embeddings for search indexing.
+
+### 2. Launching the Web App
+
+Run the Flask server:
+
+```bash
+python app.py
+
+```
+
+Open your browser and navigate to `http://127.0.0.1:5000` to access the search app.
+
+```
+
+```
